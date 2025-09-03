@@ -1,0 +1,81 @@
+/* ==UserStyle==
+@name         Trello Compact Userstyle
+@namespace    trello-compact-userstyle
+@version      1.0.0
+@description  Reduce paddings/margins and move the bottom view navbar to the top to maximize vertical space on laptops.
+@author       Francesco Anzalone
+==/UserStyle== */
+
+/*
+Move the island (view) navbar to the top and make it compact.
+This replaces the default bottom placement and frees vertical space.
+*/
+#island-nav {
+	position: fixed;
+	top: 33px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 0;
+	background: rgba(0, 0, 0, 0.3);
+	border: 0;
+	z-index: 1000; /* keep it above board columns */
+}
+
+#island-nav button[aria-checked="false"] {
+	color: #fff;
+}
+
+#island-nav button[aria-checked="true"] {
+	color: var(--ds-icon-selected, #0c66e4);
+}
+
+/* Reduce extra spacing around the board */
+div.board-wrapper #board {
+	padding-bottom: 2px !important;
+}
+
+div.board-header > div {
+	padding: 0;
+}
+
+/* Compact modals/card back layout */
+#layer-manager-card-back > div > div {
+	margin: 0;
+}
+
+#layer-manager-card-back > div > div > div:nth-child(2) > div > div > div {
+	max-height: calc(100dvh - 10px);
+}
+
+#layer-manager-card-back
+	> div
+	> div
+	> div:nth-child(2)
+	> div
+	> div
+	> div
+	> nav {
+	display: none;
+}
+
+/* Compact the global header */
+#header {
+	padding: 0;
+}
+
+#surface > div:nth-child(1) {
+	min-height: 32px;
+}
+
+/* Keep card cover header visible but compact inside card back */
+#layer-manager-card-back
+	> div
+	> div
+	> div:nth-child(2)
+	> div
+	> div
+	> div
+	> header
+	div[data-testid="card-cover"] {
+	min-height: 90px !important;
+}
