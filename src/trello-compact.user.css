@@ -43,6 +43,10 @@ div.board-header > div {
 	margin: 0;
 }
 
+div[aria-labelledby="card-back-name"] {
+	margin-top: 0 !important;
+}
+
 #layer-manager-card-back > div > div > div:nth-child(2) > div > div > div {
 	max-height: calc(100dvh - 10px);
 }
@@ -55,7 +59,14 @@ div.board-header > div {
 	> div
 	> div
 	> nav {
-	display: none;
+    position: absolute;
+    bottom: 10px;
+    top: 0;
+    z-index: 1000;
+
+	& > div[role="group"] {
+		padding: 0 !important;
+	}
 }
 
 /* Compact the global header */
